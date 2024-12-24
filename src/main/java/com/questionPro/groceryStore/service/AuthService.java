@@ -19,7 +19,7 @@ public class AuthService {
     @Autowired
     private TokenService tokenService;
 
-    public void registerUser(String name, String email, String password) {
+    public void registerUser(String name, String email, String password,Role role) {
         if (userRepository.findByEmail(email).isPresent()) {
             throw new IllegalArgumentException("Email already exists!");
         }
@@ -28,7 +28,7 @@ public class AuthService {
         user.setName(name);
         user.setEmail(email);
         user.setPassword(passwordEncoder.encode(password));
-        user.setRole(Role.USER);
+        user.setRole(role != null ? role : Role.USER);
         userRepository.save(user);
     }
 

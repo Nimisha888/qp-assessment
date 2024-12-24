@@ -1,8 +1,10 @@
 package com.questionPro.groceryStore.controller;
 
+import com.questionPro.groceryStore.entity.Role;
 import com.questionPro.groceryStore.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -20,8 +22,15 @@ public class AuthController {
         String name = request.get("name");
         String email = request.get("email");
         String password = request.get("password");
+        String roleString = request.get("role");
 
-        authService.registerUser(name, email, password);
+        Role role;
+        try {
+            role = Role.valueOf(roleString);
+        } catch (IllegalArgumentException e) {
+            throw new AccessDeniedException("Invalid role!");
+        }
+        authService.registerUser(name, email, password, role);
         return ResponseEntity.ok("User registered successfully!");
     }
 

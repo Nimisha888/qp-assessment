@@ -4,6 +4,7 @@ package com.questionPro.groceryStore.entity;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "order_item")
 public class OrderItem {
 
     @Id
@@ -12,7 +13,7 @@ public class OrderItem {
 
     @ManyToOne
     @JoinColumn(name = "order_id", nullable = false)
-    private Order order;
+    private Orders order;
 
     @ManyToOne
     @JoinColumn(name = "grocery_item_id", nullable = false)
@@ -20,6 +21,7 @@ public class OrderItem {
 
     @Column(nullable = false)
     private Integer quantity;
+
 
     public Long getId() {
         return id;
@@ -29,11 +31,11 @@ public class OrderItem {
         this.id = id;
     }
 
-    public Order getOrder() {
+    public Orders getOrder() {
         return order;
     }
 
-    public void setOrder(Order order) {
+    public void setOrder(Orders order) {
         this.order = order;
     }
 
@@ -52,4 +54,6 @@ public class OrderItem {
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
+
+
 }

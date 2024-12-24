@@ -4,11 +4,12 @@ package com.questionPro.groceryStore.entity;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "grocery_item")
 public class GroceryItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer grocery_item_id;
 
     @Column(nullable = false)
     private String name;
@@ -19,13 +20,17 @@ public class GroceryItem {
     @Column(nullable = false)
     private Integer quantity;
 
-
-    public Long getId() {
-        return id;
+    public GroceryItem(){
+    }
+    public GroceryItem(Integer grocery_item_id) {
+        this.grocery_item_id = grocery_item_id;
+    }
+    public Integer getGroceryItemId() {
+        return grocery_item_id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setGroceryItemId(Integer grocery_item_id) {
+        this.grocery_item_id = grocery_item_id;
     }
 
     public String getName() {

@@ -1,7 +1,7 @@
 package com.questionPro.groceryStore.controller;
 
 import com.questionPro.groceryStore.entity.GroceryItem;
-import com.questionPro.groceryStore.entity.Order;
+import com.questionPro.groceryStore.entity.Orders;
 import com.questionPro.groceryStore.entity.Role;
 import com.questionPro.groceryStore.service.AdminService;
 import com.questionPro.groceryStore.service.UserService;
@@ -81,7 +81,7 @@ public class MainController {
     @PutMapping("/groceries/{id}")
     public ResponseEntity<GroceryItem> updateGroceryItem(
             @RequestHeader("Authorization") String token,
-            @PathVariable Long id,
+            @PathVariable Integer id,
             @RequestBody GroceryItem groceryItem) {
 
         if (token.startsWith("Bearer ")) {
@@ -109,7 +109,7 @@ public class MainController {
     @PatchMapping("/groceries/{id}/inventory")
     public ResponseEntity<GroceryItem> updateInventory(
             @RequestHeader("Authorization") String token,
-            @PathVariable Long id,
+            @PathVariable Integer id,
             @RequestParam int quantity) {
 
 
@@ -138,7 +138,7 @@ public class MainController {
     @DeleteMapping("/groceries/{id}")
     public ResponseEntity<Void> deleteGroceryItem(
             @RequestHeader("Authorization") String token,
-            @PathVariable Long id) {
+            @PathVariable Integer id) {
 
 
         if (token.startsWith("Bearer ")) {
@@ -166,9 +166,9 @@ public class MainController {
 
 
     @PostMapping("/orders")
-    public ResponseEntity<Order> placeOrder(
+    public ResponseEntity<Orders> placeOrder(
             @RequestHeader("Authorization") String token,
-            @RequestBody Order order) {
+            @RequestBody Orders order) {
 
 
         if (token.startsWith("Bearer ")) {
@@ -187,7 +187,7 @@ public class MainController {
             throw new AccessDeniedException("Invalid role!");
         }
         if (role == Role.USER) {
-            return ResponseEntity.ok(userService.placeOrder(order));
+            return ResponseEntity.ok(userService.placeOrder(order,token));
         }
         throw new AccessDeniedException("Only users can place orders!");
     }

@@ -20,7 +20,7 @@ public class AdminService {
         return groceryItemRepository.findAll();
     }
 
-    public GroceryItem updateGroceryItem(Long id, GroceryItem updatedGroceryItem) {
+    public GroceryItem updateGroceryItem(Integer id, GroceryItem updatedGroceryItem) {
         GroceryItem existingGroceryItem = groceryItemRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Grocery item not found with ID: " + id));
 
@@ -31,14 +31,14 @@ public class AdminService {
         return groceryItemRepository.save(existingGroceryItem);
     }
 
-    public void deleteGroceryItem(Long id) {
+    public void deleteGroceryItem(Integer id) {
         if (!groceryItemRepository.existsById(id)) {
             throw new IllegalArgumentException("Grocery item not found with ID: " + id);
         }
         groceryItemRepository.deleteById(id);
     }
 
-    public GroceryItem updateInventory(Long id, int quantity) {
+    public GroceryItem updateInventory(Integer id, int quantity) {
         GroceryItem groceryItem = groceryItemRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Grocery item not found with ID: " + id));
 
