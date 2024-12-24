@@ -46,5 +46,4 @@ Ensure the following are installed on your system:
 docker-compose build
 docker-compose up
 
-
 Thank You!!
