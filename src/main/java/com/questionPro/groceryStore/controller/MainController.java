@@ -18,13 +18,13 @@ import java.util.List;
 public class MainController {
 
     @Autowired
-    private AdminService adminService;
+    AdminService adminService;
 
     @Autowired
-    private UserService userService;
+    UserService userService;
 
     @Autowired
-    private TokenService tokenService;
+    TokenService tokenService;
 
     @GetMapping("/groceries")
     public ResponseEntity<List<GroceryItem>> getGroceries(@RequestHeader("Authorization") String token) {

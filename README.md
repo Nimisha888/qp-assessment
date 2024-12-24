@@ -23,9 +23,28 @@ A Spring Boot-based RESTful API for managing grocery items and orders. This appl
 - **Hibernate**: ORM for database operations
 - **Postman**: API testing
 - **Maven**: Dependency management
-- **Docker (Optional)**: Containerization support
+- **Docker**: Containerization support
 
 ---
 
+## Setup and Installation
+
+### Clone the Repository
+```bash
+git clone https://github.com/Nimisha888/qp-assessment.git
+cd qp-assessment
+
+## **Prerequisites**
+
+Ensure the following are installed on your system:
+
+- [Docker](https://www.docker.com/products/docker-desktop) (version 20.10 or later)
+- [Docker Compose](https://docs.docker.com/compose/) (version 2.0 or later)
+
+### Create Docker image and start the appplication
+
+docker-compose build
+docker-compose up
 
 
+Thank You!!

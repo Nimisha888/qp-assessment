@@ -22,9 +22,14 @@ public class GroceryItem {
 
     public GroceryItem(){
     }
-    public GroceryItem(Integer grocery_item_id) {
+
+    public GroceryItem(Integer grocery_item_id, String name, Double price, Integer quantity) {
         this.grocery_item_id = grocery_item_id;
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
     }
+
     public Integer getGroceryItemId() {
         return grocery_item_id;
     }

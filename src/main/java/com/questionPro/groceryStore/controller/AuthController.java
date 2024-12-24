@@ -16,6 +16,9 @@ public class AuthController {
     @Autowired
     private AuthService authService;
 
+    public AuthController(AuthService authService) {
+    }
+
 
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody Map<String, String> request) {
